@@ -1,0 +1,161 @@
+Windows GUI
+Linux CLI 
+
+print working dir -pwd
+
+
+root(/)-
+etc 
+bin 
+user
+tmp 
+deb 
+
+to move a file - mv 1.txt vedantfolder
+to copy a file - cp 2.txt vedantfolder
+
+
+Users in Linux 
+
+1. Regular user - in its own dir
+2. root user - full access
+3. Service user - all service have its own user
+
+by using sudo we become admin for that cmd
+sudo su - you become root (not recommended)
+
+Absolute vs Related path 
+ abs- goto path in diff working dir
+ relative - goto path in same working dir 
+
+ apt- to install a software
+sudo apt update - updates the list of softwares
+sudo apt upgrade - updates the enitre softwares
+
+ls -R = recursive  
+
+touch .harry - hidden file 
+show hidden files - ls -a
+
+ls -lart = permission all recursive files
+
+HIstory - to get history so never type in password 
+  
+rw-r--r-- = user / group / other
+
+- file , d directory 
+
+765- -rwxrw-r-x
+644- -rw-r--r--
+564- -r-xrw-r--
+
+chmod 765 1.txt 
+
+top - used to get ongoing process 
+
+kill chrome - used to shut down the app via terminal 
+
+
+-----------------------------------------------------------
+
+
+useradd venom = create user
+groupadd spider = create group 
+cat /etc/passwd = to display details of user
+cat /etc/group = to dsplay group along with its users
+useradd -G spider venom2 = add to a group a new user
+usermod -G spider venom = add to a group exising user
+usermod -G spider,spider2 venom = add a single use to user multiple groups
+usermod -g spider venom= make spider primary grp for venom
+
+
+passwd venom = to set passwd to venom
+-g =primary user    -G=secondary grp
+
+
+------------------------------------------------------------------
+
+SED - Stream EDitor 
+
+s-substitute
+
+Matches replaced = cat -n sample.txt(line by line with numbering)
+
+                   cat -n sample.txt | sed 's/this/vedant/' (will replace this with vedant
+                                                              but will do only for 1 this in one line
+                                                            if 2nd this comes it will remain this)
+
+                   cat -n sample.txt | sed 's/this/vedant/g' (will replace all this with vedant)
+                  
+                   cat -n sample.txt | sed 's/^/vedant/g' (will put vedant at beg of each line)
+
+                   cat -n sample.txt | sed 's/$/vedant/g' (will put vedant at end of each line)
+
+                   cat -n sample.txt | sed '3! s/this/vedant' (except third line)
+
+cat -n sample.txt | sed G (will put space in end of each line)
+
+cat -n sample.txt | sed -n 2,3p (will print from line 2 to line 3)
+
+cat -n sample.txt | sed '2,5d' (delete lines two to five)
+
+cat -n sample.txt | sed '$d' (delete last line)
+
+cat -n sample.txt | sed -e 'G' -e '3d' (mltiple cmds in single line)
+
+cat -n sample.txt | sed 'G;G' (Give two liner spaces)
+
+cat -n sample.txt | sed '/yyou/ s/this/vedant/' (if there is yyou in line replace this 
+                                                 with vedant)
+
+cat -n sample.txt | sed '1~3d' (every third line deleted 1,4,7,10,,,)
+
+cat -n sample.txt | sed '0~3d' (lines that are multiple of 3)
+
+cat -n sample.txt | sed '0~3p' (every third line will be reprinted)
+
+cat -n sample.txt | sed 's/this/\U&/g' (Capitalizes all this)
+
+cat -n sample.txt | sed 's/this/vedant/ig' (replaces all this with vedant ignoring case)
+
+sed -i 's/this/vedant/' sample.txt (to make chages in the actual file )
+
+--------------------------------------------------------------------------
+
+AWK
+
+awk '{print;}' sampleawk.txt (print all content )
+
+awk '{print $1;}' sampleawk.txt (prints first column)
+
+awk '{print $NF;}' sampleawk.txt (to print the last column)
+
+awk '{print $(NF-1);}' sampleawk.txt (to print second last column)
+
+awk -F ":" '{print $1;}' sampleawk.txt  (: se ple ka sab)
+
+awk -F ":" '{print $2;}' sampleawk.txt (: k baad ka sab)
+
+cat sampleawk.txt | awk '$4=/M/' (in table where gender is male'
+
+cat sampleawk.txt | awk '$3==$2' (where col 3 and 2 are same)
+
+cat sampleawk.txt | awk '{print $4}' | awk '! ($0 in array) (array[$0]; print)' sampleawk.txt
+-----------------------------------------------------------------------------
+
+head and tail 
+good for reading logfiles
+
+head bootstrap.log (first 10 lines)
+tail bootstrap.org (last 10 lines)
+head -n3 bootstrao.log (first 3 lines)
+head -f bootstrap.log(to follow if there is some change in the file its reflected in the terminal)
+head bootstrap.log jenkins.log (we can see 10 lines of even multiple files)
+quest - from line a to line b ?
+
+------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------------
+
